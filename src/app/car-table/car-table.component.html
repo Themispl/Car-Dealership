@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center m-3">
+    <table mat-table [dataSource]="carModelList" class="mat-elevation-z8 table-shadow" matSort>
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let carModel">{{ carModel.id }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
+        <td mat-cell *matCellDef="let carModel">{{ carModel.model }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>price</th>
+        <td mat-cell *matCellDef="let carModel">{{ carModel.price }}</td>
+      </ng-container>
+      <ng-container matColumnDef="carCategoryId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>carCategoryId</th>
+        <td mat-cell *matCellDef="let carModel">{{ carModel.carCategoryId }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let car">
+          <button mat-icon-button color="primary" (click)="showEditCarForm(car)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="deleteCarModel(car.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div class="search-container m-3">
+     <form [formGroup]="searchForm" (ngSubmit)="loadCarById()">
+       <mat-form-field appearance="fill">
+         <mat-label>Find Car by ID</mat-label>
+         <input
+           matInput
+           type="number"
+           id="searchId"
+           formControlName="searchId"
+           placeholder="Enter ID"
+         />
+       </mat-form-field>
+   
+       <button mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Find</button>
+     </form>
+   
+     <div *ngIf="searchCarId">
+       <mat-card>
+         <mat-card-header>
+           <mat-card-title>Car Found</mat-card-title>
+         </mat-card-header>
+         <mat-card-content>
+           <mat-list role="list">
+             <mat-list-item role="listitem">ID: {{ searchCarId.id }}</mat-list-item>
+             <mat-list-item role="listitem">Model: {{ searchCarId.model }}</mat-list-item>
+             <mat-list-item role="listitem">Price: {{ searchCarId.price }}</mat-list-item>
+             <mat-list-item role="listitem">CarCategoryId: {{ searchCarId.carCategoryId }}</mat-list-item>
+           </mat-list>
+         </mat-card-content >
+         <mat-card-actions class="center-buttons">
+           <button mat-raised-button color="basic" (click)="hideCard()">Close</button>
+         </mat-card-actions>
+       </mat-card>
+     </div>
+     </div>
+   
+     <div class="m-3">
+       <button mat-raised-button color="primary" [routerLink]="['/app-new-entry-car']">Add New Car</button>
+     </div>
+   </div>
+     
+   <app-edit-delete
+     *ngIf="selectedCar"
+     [car]="selectedCar"
+     (save)="onCarSave($event)"
+     (cancel)="onEditCancel()"/>
+   
+   

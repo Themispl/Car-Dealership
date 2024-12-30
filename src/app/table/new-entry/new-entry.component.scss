@@ -1,0 +1,29 @@
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh; 
+  background-color: #f8f9fa; 
+}
+
+.add-car-form {
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  padding: 20px;
+  background-color: #ffffff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  max-width: 500px; 
+  text-align: center; 
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

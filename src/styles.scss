@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+$primary-color: hsl(240, 10%, 20%);
+$primary-color-light: hsl(226.8, 16.7%, 48%);
+$primary-color-light-hover-button: hsl(226.8, 16.7%, 48%);
+$primary-color-light-hover-text: hsl(227, 25%, 65%);
+$primary-color-dark: hsl(0, 0%, 21%);
+$primary-color-contrastText: hsl(0, 0%, 100%);
+$secondary-color: hsl(54, 100%, 50%);
+$cool-light-grey: hsl(0, 0%, 95%);
+$link-hover-color: rgb(215, 224, 231);
+$error-color: hsl(0, 77%, 58%);
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  }
+  
+  body {
+    margin: 5px;
+    padding: 5px;
+    position: relative;
+    background: #f4f7fa;
+  }
+
+  // :hover {
+  //   background-color: $link-hover-color;
+  //   border-color: rgb(179, 179, 179);
+  // }
+
+  // .mat-mdc-card {
+  //   &-title,
+  //   &-subtitle {
+  //     color: $primary-color;
+  //     padding-left: 12px;
+  //     padding-top: 8px;
+  //   }
+ 
+  //   &-header {
+  //     flex-wrap: wrap;
+  //     align-items: center;
+  //     &-text {
+  //       margin: 0;
+  //     }
+  //     // align mat-content because mat-card has padding by default
+  //     > :first-child {
+  //       margin-left: 10px;
+  //     }
+  //     //for search/dropdown mat-controls in header
+  //     > mat-form-field {
+  //       width: 30%;
+  //       &.field-left {
+  //         margin-right: auto;
+  //       }
+  //       &.field-right {
+  //         margin-left: auto;
+  //       }
+       
+  //     }
+  //     button {
+  //       margin-bottom: 20px;
+  //     }
+  //   }

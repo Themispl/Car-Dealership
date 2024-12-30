@@ -1,0 +1,55 @@
+<div class="form-container">
+    <div class="add-car-form mt-5">
+        <h3>Add New Car</h3>
+        <form [formGroup]="addCarForm" (ngSubmit)="submitForm()">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Car model</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="model"
+              placeholder="Enter Car Model"
+            />
+            <mat-error *ngIf="addCarForm.get('model')?.invalid && addCarForm.get('model')?.touched">
+              Car Model is required
+            </mat-error>
+          </mat-form-field>
+      
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Price</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="price"
+              placeholder="Enter Price"
+            />
+            <mat-error *ngIf="addCarForm.get('price')?.invalid && addCarForm.get('price')?.touched">
+              Price is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Car Brand Id</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="carCategoryId"
+              placeholder="Enter Car Brand Id"
+            />
+            <mat-error *ngIf="addCarForm.get('carCategoryId')?.invalid && addCarForm.get('carCategoryId')?.touched">
+             Car Brand Id is required
+            </mat-error>
+          </mat-form-field>
+      
+          <div class="mt-3">
+            <button mat-raised-button color="primary" type="submit" [disabled]="addCarForm.invalid">
+              Save
+            </button>
+            <button mat-raised-button color="primary" [routerLink]="'/cartable'">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>  
+      
+    

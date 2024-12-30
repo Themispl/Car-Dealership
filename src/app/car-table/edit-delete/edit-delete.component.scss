@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    height: 70vh; 
+    background-color: #f8f9fa; 
+  }
+  
+  .edit-car-form {
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px 16px 20px 35px;
+    background-color: #ffffff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 500px; 
+    text-align: left; 
+
+  }
+  
+  h3 {
+    margin-bottom: 20px; 
+    text-align: center; 
+  }
+
+  @media (max-width: 499px) {
+    .edit-car-form {
+      max-width: 80%; 
+      padding: 20px 16px 20px 70px;
+    }
+}

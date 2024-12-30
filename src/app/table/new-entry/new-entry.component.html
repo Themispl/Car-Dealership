@@ -1,0 +1,42 @@
+<div class="form-container">
+<div class="add-car-form mt-5">
+    <h3>Add New Car</h3>
+    <form [formGroup]="addCarForm" (ngSubmit)="submitForm()">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Fuel Category</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="fuelCategory"
+          placeholder="Enter Fuel Category"
+        />
+        <mat-error *ngIf="addCarForm.get('fuelCategory')?.invalid && addCarForm.get('fuelCategory')?.touched">
+          Fuel Category is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Manufacturer</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="manufacturer"
+          placeholder="Enter Manufacturer"
+        />
+        <mat-error *ngIf="addCarForm.get('manufacturer')?.invalid && addCarForm.get('manufacturer')?.touched">
+          Manufacturer is required
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="mt-3">
+        <button mat-raised-button color="primary" type="submit" [disabled]="addCarForm.invalid">
+          Save
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="'/table'">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>  
+  

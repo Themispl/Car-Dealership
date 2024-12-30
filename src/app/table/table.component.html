@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center m-3">
+  <table mat-table [dataSource]="carsList" class="mat-elevation-z8 table-shadow" matSort>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let car">{{ car.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fuelCategory">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fuel Category</th>
+      <td mat-cell *matCellDef="let car">{{ car.fuelCategory }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="manufacturer">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Manufacturer</th>
+      <td mat-cell *matCellDef="let car">{{ car.manufacturer }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let car">
+        <button mat-icon-button color="primary" (click)="showEditCarForm(car)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteCar(car.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<div class="d-flex justify-content-around">
+ <div class="search-container m-3">
+  <form [formGroup]="searchForm" (ngSubmit)="loadCarById()">
+    <mat-form-field appearance="fill">
+      <mat-label>Find Car by ID</mat-label>
+      <input
+        matInput
+        type="number"
+        id="searchId"
+        formControlName="searchId"
+        placeholder="Enter ID"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Find</button>
+  </form>
+
+  <div *ngIf="searchCarId">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Car Found</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item role="listitem">ID: {{ searchCarId.id }}</mat-list-item>
+          <mat-list-item role="listitem">Fuel Category: {{ searchCarId.fuelCategory }}</mat-list-item>
+          <mat-list-item role="listitem">Manufacturer: {{ searchCarId.manufacturer }}</mat-list-item>
+        </mat-list>
+      </mat-card-content >
+      <mat-card-actions class="center-buttons">
+        <button mat-raised-button color="basic" (click)="hideCard()">Close</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  </div>
+
+  <div class="m-3">
+    <button mat-raised-button color="primary" [routerLink]="['/app-new-entry']">Add New Car</button>
+  </div>
+</div>
+  
+<app-edit-delete-cars
+  *ngIf="selectedCar"
+  [car]="selectedCar"
+  (save)="onCarSave($event)"
+  (cancel)="onEditCancel()">
+</app-edit-delete-cars>
+
+  
+   
