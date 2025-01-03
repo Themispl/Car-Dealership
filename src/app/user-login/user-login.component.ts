@@ -26,25 +26,32 @@ export class UserLoginComponent {
     const credentials = this.form.value as Credentials;
 
     this.userService.loginUser(credentials).subscribe(
-      {next: (res)=>{const acces_token = res.access_token;
+      {next: (res)=>{
+      const acces_token = res.access_token;
       console.log(acces_token);
       localStorage.setItem('access_token', acces_token);
 
       const decodedToken = jwtDecode(acces_token).sub as unknown as UserLogin;
       console.log(decodedToken);
 
-      this.userService.user.set({
-        fullname: decodedToken.fullname,
-        password: decodedToken.password
-      });
-      this.router.navigate(['/homepage']);
+      try {
+        const decodedToken: any = jwtDecode(acces_token);
+        console.log('Decoded Token:', decodedToken);
+
+        const email = decodedToken?.email || 'Unknown';
+
+        this.userService.user.set({ email });
+
+        this.router.navigate(['/homepage']);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        this.invalidLogin = true;
+      }
     },
     error: (error) => {
-      console.log(error);
+      console.log('Login Error:', error);
       this.invalidLogin = true;
-    }
+    },
   });
-    
   }
-
 }

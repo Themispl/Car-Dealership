@@ -7,8 +7,8 @@ export interface User {
 }
 
 export interface UserLogin {
-    fullname: string;
-    password: string;
+    email: string;
+    //password?: string;
 }
 export interface Credentials {
     email: string;

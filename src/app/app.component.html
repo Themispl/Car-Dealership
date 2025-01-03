@@ -17,7 +17,7 @@
     </div>
     @if(user()){
       <span class="me-3 d-flex gap-2 text-light">
-        Welcome, {{user().fullname}}
+        Welcome, {{user().email}}
         <mat-icon role="button" (click)="Logout()">logout</mat-icon>
       </span>
     }@else{
