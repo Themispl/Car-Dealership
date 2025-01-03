@@ -34,7 +34,7 @@ export class UserLoginComponent {
       console.log(decodedToken);
 
       this.userService.user.set({
-        fullname: decodedToken.fullname,
+        email: decodedToken.email,
         password: decodedToken.password
       });
       this.router.navigate(['/homepage']);

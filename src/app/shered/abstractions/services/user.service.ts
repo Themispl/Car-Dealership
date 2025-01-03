@@ -19,13 +19,14 @@ export class UserService {
       const decodedToken = jwtDecode(access_token)
       .sub as unknown as UserLogin
       this.user.set({
-        fullname: decodedToken.fullname,
+        email: decodedToken.email,
+        //fullname: decodedToken.fullname,
         password: decodedToken.password
       })
     }
     effect(() => {
       if(this.user()){
-        console.log("user loged in:",this.user().fullname);
+        console.log("user loged in:",this.user().email);
       }else{
         console.log("user not loged in");
       }
@@ -33,7 +34,7 @@ export class UserService {
   }
 
   loginUser(credentials: Credentials) {
-    return this.http.post<{access_token: string}>('http://localhost:3000/login', credentials);
+    return this.http.post<{access_token: string}>('https://localhost:7129/login', credentials);
   }
 
   logoutUser(){
