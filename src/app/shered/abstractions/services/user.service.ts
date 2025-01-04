@@ -23,7 +23,7 @@ export class UserService {
         if (decodedToken && decodedToken.email) {
           this.user.set({
             email: decodedToken.email,
-           // password: '' // Optional: Do not include if unnecessary
+           
           });
         } else {
           console.error('Decoded token does not contain email');
