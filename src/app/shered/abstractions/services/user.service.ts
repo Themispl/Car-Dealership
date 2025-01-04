@@ -40,6 +40,7 @@ export class UserService {
     effect(() => {
       if(this.user()){
         console.log("user loged in:",this.user().email);
+        console.log("user loged in:",this.user().email);
       }else{
         console.log("user not loged in");
       }
