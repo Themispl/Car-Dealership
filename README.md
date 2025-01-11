@@ -13,9 +13,8 @@ This secure login ensures that user data is protected and only authenticated use
 - [npm](https://www.npmjs.com/) (Node Package Manager)
 - [Angular CLI](https://cli.angular.io/) (globally installed)
 - You can install Angular CLI globally using npm:
-  ```bash npm install -g @angular/cli
-
-  then
+  ```bash
+  npm install -g @angular/cli
   
 -Install the dependencies:
 
